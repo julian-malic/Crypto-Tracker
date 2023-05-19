@@ -90,7 +90,7 @@ export default function CoinHistory() {
               <h1 className="mt-3 text-capitalize text-center"><img src={coinData.image} class="mx-3"/>{id}</h1>
               <h2 class="mt-5 tex">What is {coinData.id}?</h2>
               <div class="m-3" dangerouslySetInnerHTML={{ __html: coinData.description }} />
-              <Line options={options} data={coinData} />
+              <Line class="mb-4" options={options} data={coinData} />
             </div>
         </div>
       </>

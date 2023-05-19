@@ -32,15 +32,19 @@ export default function CoinTable() {
     }
 
     function handleSearchText(e) {
-        setFilteredCoins(
-            coins.filter(coin => {
-                if (coin.name.toUpperCase().indexOf(e.target.value.toUpperCase()) !== -1 ||
-                    coin.symbol.toUpperCase().indexOf(e.target.value.toUpperCase()) !== -1) {
-                    console.log(coin.name);
-                    return true;
-                } else { return false; }
-            })
-        );
+        if (!e.target.value) {
+            setFilteredCoins(coins.slice((pageNumber-1)*10, pageNumber*10));
+        } else {
+            setFilteredCoins(
+                coins.filter(coin => {
+                    if (coin.name.toUpperCase().indexOf(e.target.value.toUpperCase()) !== -1 ||
+                        coin.symbol.toUpperCase().indexOf(e.target.value.toUpperCase()) !== -1) {
+                        console.log(coin.name);
+                        return true;
+                    } else { return false; }
+                })
+            );
+        }
         console.log(e.target.value);
     }
 
@@ -50,11 +54,11 @@ export default function CoinTable() {
 
     return (
         <div class="row shadow rounded feature-item mt-5 mx-auto table-responsive border border-danger">
-            <div class="col d-flex justify-content-center mt-4 mb-4">
+            <div class="d-flex justify-content-center mt-4 mb-4">
                 <input class="rounded border border-danger" placeholder="Search for a coin!" onChange={handleSearchText}/>
                 <Search class="mx-2 text-danger my-auto"/>
             </div>
-            <div className="col form-group p-3">
+            <div className="form-group p-3">
                 <label for="dropdownSortFilter">Sort by</label> {/* required field */}
                 <select required className="form-control" name="sortFilter" id="dropdownSortFilter" >
                     {sortingFilters.map((filter) => <option value={filter}>{filter}</option>)}
