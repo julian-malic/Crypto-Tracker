@@ -4,7 +4,7 @@ import { ArrowUp, ArrowDown } from 'react-bootstrap-icons';
 export default function CoinRow({coin}) {
     
     return (
-        <tr onClick={() => window.location=`/coin/${coin.id}`} style={{cursor: "pointer"}}>
+        <tr onClick={() => window.location=`/history/${coin.id}`} style={{cursor: "pointer"}}>
             <td><img src={coin.image} style={{maxWidth:"40px"}}/></td>
             <td>
                 {coin.name}

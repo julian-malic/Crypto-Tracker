@@ -23,9 +23,8 @@ export default function Trending() {
     return (
         <div className="row justify-content-center text-center m-3">
             {trendingCoins.map((coin) => {
-                console.log(coin);
                 return (
-                    <div className="col rounded shadow feature-item m-2 border border-danger" style={{cursor: "pointer"}} onClick={() => { window.location = `/coin/${coin.item.id}`}}>
+                    <div className="col rounded shadow feature-item m-2 border border-danger" style={{cursor: "pointer"}} onClick={() => { window.location = `/history/${coin.item.id}`}}>
                         <img className="mt-2" src={coin.item.large} style={{maxWidth:"50px"}}/>
                         <br/>
                         <p className="mb-0 mt-2">{coin.item.name}</p>
