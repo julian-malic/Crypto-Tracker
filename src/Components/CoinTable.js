@@ -11,7 +11,7 @@ export default function CoinTable() {
     const [error, setError] = useState(null);
     const [sortingFilter, setSortingFilter] = useState("market_cap_desc");
     
-    const sortingFilters = [["market_cap_desc", "Market cap ↓"], ["market_cap_asc", "Market cap ↑"], ["volume_desc", "Volume ↓"], ["volume_asc", "Volume ↑"], ["id_desc", "Name ↓"], ["id_desc", "Name ↑"]];
+    const sortingFilters = [["market_cap_desc", "Market cap ↓"], ["market_cap_asc", "Market cap ↑"], ["volume_desc", "Volume ↓"], ["volume_asc", "Volume ↑"], ["id_desc", "Name ↓"], ["id_asc", "Name ↑"]];
 
     useEffect(() => {
         // I would add pagination but the api rate limits me :(
@@ -62,13 +62,12 @@ export default function CoinTable() {
     return (
         <div class="row shadow rounded feature-item mt-5 mx-auto table-responsive border border-danger">
             <div class="d-flex justify-content-center mt-4 mb-4">
-                <input class="rounded border border-danger" placeholder="Search for a coin!" onChange={handleSearchText}/>
-                <Search class="mx-2 text-danger my-auto"/>
+                <input class="rounded border border-danger" placeholder="Search for a coin!" onChange={handleSearchText} style={{outlineColor:"red"}}/>
             </div>
             <div className="form-group p-3">
-                <label for="dropdownSortFilter">Sort by</label> {/* required field */}
-                <select required className="form-control" name="sortFilter" id="dropdownSortFilter" onChange={handleSortingFilter}>
-                    {sortingFilters.map((filter) => <option value={filter[0]}>{filter[1]}</option>)}
+                <label for="dropdownSortFilter">Sort by</label>
+                <select className="form-control" name="sortingFilter" id="dropdownSortFilter" onChange={handleSortingFilter}>
+                    {sortingFilters.map((filter) => (filter[0] === sortingFilter) ? <option value={filter[0]} selected>{filter[1]}</option> : <option value={filter[0]}>{filter[1]}</option>)}
                 </select>
             </div>
             <table class="table text-center table-hover">

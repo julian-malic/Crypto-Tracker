@@ -12,7 +12,7 @@ export default function CoinRow({coin}) {
                 <p className="text-muted text-uppercase mb-0">{coin.symbol}</p>
             </td>
             <td>
-                ${coin.current_price.toLocaleString()}
+                ${(coin.current_price) ? coin.current_price.toLocaleString() : 0}
                 <br/>
                 <p className="text-muted mb-0">AUD</p>
             </td>
@@ -22,7 +22,7 @@ export default function CoinRow({coin}) {
                     <ArrowUp className="m-2" color="green" size={20} /> :
                     <ArrowDown className="m-2" color="red" size={20} />
                 }
-                {coin.price_change_percentage_24h.toFixed(2)}%
+                {(coin.price_change_percentage_24h) ? coin.price_change_percentage_24h.toFixed(2) : 0}%
             </td>
             {/* 
             <td>
