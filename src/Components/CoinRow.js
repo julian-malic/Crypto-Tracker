@@ -24,12 +24,6 @@ export default function CoinRow({coin}) {
                 }
                 {(coin.price_change_percentage_24h) ? coin.price_change_percentage_24h.toFixed(2) : 0}%
             </td>
-            {/* 
-            <td>
-                <button className="btn btn-primary">Buy {coin.symbol.toUpperCase()}</button>
-                <button className="btn btn-light m-1">Sell {coin.symbol.toUpperCase()}</button>
-            </td>
-            */}
         </tr>
     )
 }

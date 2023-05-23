@@ -76,7 +76,6 @@ export default function CoinHistory() {
     return (
       <>
         <div class="row">
-            
             <div class="col shadow rounded mb-5">
               <h1 class="mt-3 text-capitalize text-center">
                 <img src={coinData.info.image.small} class="mx-3 rounded shadow"/>
