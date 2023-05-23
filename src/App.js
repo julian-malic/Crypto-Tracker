@@ -12,7 +12,7 @@ function App() {
         <div class="text-center">
           <Link to="/">
             <img class="img-fluid" src="../img/logo.png"></img>
-            <hr/>
+            <hr class="text-danger"/>
           </Link>
         </div>
         <Routes>

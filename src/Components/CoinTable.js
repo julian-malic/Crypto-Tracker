@@ -15,7 +15,7 @@ export default function CoinTable() {
 
     useEffect(() => {
         // I would add pagination but the api rate limits me :(
-        axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=${sortingFilter}&per_page=250&page=1&sparkline=false`) // get 250 coins on one page to prevent rate limit...
+        axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=${sortingFilter}&per_page=250&page=1&sparkline=false`) // get 250 coins on one request to prevent rate limit...
         .then((res) => {
             console.log(res);
             setCoins(res.data);
@@ -61,14 +61,19 @@ export default function CoinTable() {
 
     return (
         <div class="row shadow rounded feature-item mt-5 mx-auto table-responsive border border-danger">
-            <div class="d-flex justify-content-center mt-4 mb-4">
-                <input class="rounded border border-danger" placeholder="Search for a coin!" onChange={handleSearchText} style={{outlineColor:"red"}}/>
-            </div>
-            <div className="form-group p-3">
-                <label for="dropdownSortFilter">Sort by</label>
-                <select className="form-control" name="sortingFilter" id="dropdownSortFilter" onChange={handleSortingFilter}>
-                    {sortingFilters.map((filter) => (filter[0] === sortingFilter) ? <option value={filter[0]} selected>{filter[1]}</option> : <option value={filter[0]}>{filter[1]}</option>)}
-                </select>
+            <div class="row my-4">
+                <div class="col text-center my-auto">
+                    <input class="rounded border border-danger" placeholder="Search for a coin!" onChange={handleSearchText} style={{outlineColor:"red"}}/>
+                </div>
+                <div class="col text-center my-auto">
+                    <h4>Top 250 coins</h4>
+                </div>
+                <div className="col form-group">
+                    <label for="dropdownSortFilter">Sort by</label>
+                    <select className="form-control" name="sortingFilter" id="dropdownSortFilter" onChange={handleSortingFilter}>
+                        {sortingFilters.map((filter) => (filter[0] === sortingFilter) ? <option value={filter[0]} selected>{filter[1]}</option> : <option value={filter[0]}>{filter[1]}</option>)}
+                    </select>
+                </div>
             </div>
             <table class="table text-center table-hover">
                 <thead>
